@@ -1,0 +1,124 @@
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{% static 'front/bootstrap4/css/bootstrap.min.css' %}"> 
+    
+{% comment %} {% for i in site%}
+    <title>{{i.name}}</title>
+{% endfor %} {% endcomment %}
+
+{% block title%} {% endblock %}
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+        <!-- Brand -->
+        <a class="navbar-brand text-info" href="/">MY WEB</a>
+
+        <!-- Links -->
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="/about">About</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Link 2</a>
+            </li>
+
+            <!-- Dropdown -->
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                    Dropdown link
+                </a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="#">Link 1</a>
+                    <a class="dropdown-item" href="#">Link 2</a>
+                    <a class="dropdown-item" href="#">Link 3</a>
+                </div>
+            </li>
+        </ul>
+        <form class="form-inline ml-auto" action="/action_page.php">
+            <input class="form-control mr-sm-2" type="text" placeholder="Search">
+            <button class="btn btn-info" type="submit">Search</button>
+        </form>
+    </nav>
+
+<div>
+
+   <div id="demo" class="carousel slide" data-ride="carousel">
+
+        <!-- Indicators -->
+        <ul class="carousel-indicators">
+            <li data-target="#demo" data-slide-to="0" class="active"></li>
+            <li data-target="#demo" data-slide-to="1"></li>
+            <li data-target="#demo" data-slide-to="2"></li>
+        </ul>
+
+        <!-- The slideshow -->
+        <div class="carousel-inner">
+            <div class="carousel-item active bg-dark text-center">
+                <img src="{% static 'front/images/6a8e1be3eb19ab84072e8a399c5d88a9.gif' %}">
+            </div>
+            <div class="carousel-item bg-dark text-center">
+                <img src="{% static 'front/images/d1b712551a26c1a210896baa512eb10b.gif' %}">
+            </div>
+            <div class="carousel-item bg-dark text-center">
+                <img src="{% static 'front/images/efe9b6071f381acef83e9f169c6efb23c51065c6r1-370-300_00.gif' %}">
+            </div>
+        </div>
+
+        <!-- Left and right controls -->
+        <a class="carousel-control-prev" href="#demo" data-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+        </a>
+        <a class="carousel-control-next" href="#demo" data-slide="next">
+            <span class="carousel-control-next-icon"></span>
+        </a>
+
+    </div>
+
+
+{% block content %} {% endblock %}
+</div>
+
+
+   <footer>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#">Navbar w/ text</a>
+         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
+                aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button> 
+            <div class="collapse navbar-collapse" id="navbarText">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Features</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Pricing</a>
+                    </li>
+                </ul>
+                <span class="navbar-text">
+                    Navbar text with an inline element
+                </span>
+            </div>
+        </nav>
+    </footer> 
+
+
+    
+    <script src="{% static 'front/bootstrap4/jquery/jquery.min.js' %}"></script>
+    <script src="{% static 'front/bootstrap4/js/bootstrap.min.js' %}"></script>
+    
+</body>
+
+</html>

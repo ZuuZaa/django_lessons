@@ -1,0 +1,23 @@
+{% extends 'front/layout.html' %}
+{% load static %}
+
+{% block title%} 
+<title>
+{{site.name}} | news
+</title>
+{% endblock %}
+
+{% block content %}
+
+{% for i in news %}
+
+<div>{{i.name}}</div>
+
+<div>{{i.body_txt}}</div>
+
+<div>{{i.date}}</div>
+
+<img src= "{{i.picurl}}">
+
+{% endfor %}
+{% endblock %}

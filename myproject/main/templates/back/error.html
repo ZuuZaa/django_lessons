@@ -1,0 +1,20 @@
+<div class="h2 text-muted">
+ERROR: all field are requirement
+</div>
+
+{% extends 'back/layout.html' %} 
+
+{% load static %}
+
+{% block content %}
+
+<div class="card card-primary">
+              <div class="card-header">
+                <h3 class="card-title">ERROR</h3>
+              </div>
+              <!-- /.card-header -->
+              <!-- form start -->
+<div class="h5 text-danger p-3">{{error}}</div>
+            </div>
+
+{% endblock  %}
