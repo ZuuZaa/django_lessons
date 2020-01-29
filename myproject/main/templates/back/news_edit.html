@@ -1,0 +1,67 @@
+{% extends 'back/layout.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<div class="card card-primary">
+  <div class="card-header">
+    <h3 class="card-title">Edit News</h3>
+  </div>
+  <!-- /.card-header -->
+  <!-- form start -->
+  <form action="{% url 'news_edit' news.pk%}" role="form" method="post" enctype="multipart/form-data">
+
+    {% csrf_token %}
+
+    <div class="card-body">
+      <div class="row">
+        <div class="form-group col-6">
+          <input type="text" class="form-control" value="{{news.name}}" id="newstitle" name="newstitle"
+            placeholder="News Name">
+        </div>
+        <div class="form-group col-6">
+          <div class="form-group">
+            <select class="form-control" id="newscat" name="newscat">
+
+              <option value={{news.catid}}>{{news.category}}</option>
+              {% for i in cat%}
+              <option value={{i.pk}}>{{i.catname}} | {{i.name}}</option>
+              {% endfor %}
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <textarea type="textarea" id="shorttext" name="shorttext" row="5"
+          class="form-control" placeholder="Short Text">{{news.short_txt}}</textarea>
+      </div>
+      <div class="form-group">
+        <textarea type="textarea" id="bodytext" name="bodytext" row="5" class="form-control"
+          placeholder="Body of News">{{news.body_txt}}</textarea>
+      </div>
+      <div class="form-group">
+        <div class="row">
+          <div class="col-6">
+        <div class="input-group">
+          <input type="text" value="{{news.picurl}}" id="picname" name='picname'>
+        </div></div>
+        <div class="col-6">
+          <img src="{{news.picurl}}" alt="" style="width:20%">
+        </div>
+      </div>
+        <div class="form-group">
+          <div class="input-group">
+            <input type="file" id="myfile" name='myfile'>
+          </div>
+        </div>
+
+      </div>
+      <!-- /.card-body -->
+      <div class="card-footer">
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </div>
+  </form>
+</div>
+
+{% endblock  %}

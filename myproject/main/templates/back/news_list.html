@@ -12,6 +12,7 @@
       <th>Image</th>
       <th>Name</th>
       <th>Short text</th>
+      <th>Subcategory</th>
       <th>date</th>
       <th>Edit</th>
     </tr>
@@ -24,10 +25,11 @@
       <div style='width:60px'><img src="{{i.picurl}}" style='width:100%'></div></td>
       <td>{{i.name}}</td>
       <td>{{i.short_txt}}</td>
-      <td>{{i.date}}</td>
+      <td>{{i.date}} | {{i.time}}</td>
+      <td>{{i.category}}</td>
       <td>
-        <i class="far fa-edit button edit"></i>
-        <i class="fas fa-trash-alt button delete"></i>
+        <a href="{% url 'news_edit' i.pk %}"><i class="far fa-edit button edit"></i></a>
+        <a href="{% url 'news_delete' i.pk %}"><i class="fas fa-trash-alt button delete"></i></a>
       </td>
     </tr>
    {% endfor %}

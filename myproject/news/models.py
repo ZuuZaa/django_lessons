@@ -11,6 +11,7 @@ class News(models.Model):
     short_txt = models.TextField()
     body_txt = models.TextField()
     date = models.CharField(default = '-', max_length = 12)
+    time = models.CharField(default = '00:00', max_length = 12)
     picname = models.CharField(max_length = 100, default = '-')
     picurl = models.CharField(max_length = 130, default = '-')
     writer = models.CharField(max_length = 30)

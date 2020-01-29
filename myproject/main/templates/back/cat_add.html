@@ -1,0 +1,28 @@
+{% extends 'back/layout.html' %} 
+
+{% load static %}
+
+{% block content %}
+
+<div class="card card-primary">
+              <div class="card-header">
+                <h3 class="card-title">Add News</h3>
+              </div>
+              <!-- /.card-header -->
+              <!-- form start -->
+              <form action="{% url 'cat_add'%}" role="form" method="post" enctype="multipart/form-data">
+              {% csrf_token %}
+                <div class="card-body">
+                <div class="row">
+                  <div class="form-group col-6">
+                    <input type="text" class="form-control" id="cattitle" name="cattitle" placeholder="Category Name">
+                  </div>
+                  
+                <!-- /.card-body -->
+                <div class="card-footer">
+                  <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+              </form>
+            </div>
+            
+{% endblock  %}

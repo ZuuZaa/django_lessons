@@ -1,0 +1,30 @@
+{% extends 'back/layout.html' %} 
+
+{% load static %}
+
+{% block content %}
+
+
+<table>
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Name</th>
+      <th>Edit</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for i in cat %}
+    <tr>
+      <td>{{i.pk}}</td>
+      <td>{{i.name}}</td>
+      <td>
+        <i class="far fa-edit button edit"></i>
+        <a href="{% url 'news_delete' i.pk %}"><i class="fas fa-trash-alt button delete"></i></a>
+      </td>
+    </tr>
+   {% endfor %}
+  </tbody>
+</table>
+
+{% endblock  %}

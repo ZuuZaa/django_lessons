@@ -20,12 +20,10 @@
                   <div class="form-group col-6">
                    <div class="form-group">
                         <select class="form-control" id="newscat" name="newscat" >
-                          <option></option>
-                          <option>category 1</option>
-                          <option>option 2</option>
-                          <option>option 3</option>
-                          <option>option 4</option>
-                          <option>option 5</option>
+                          
+                          {% for i in cat%}
+                          <option value={{i.pk}}>{{i.catname}} | {{i.name}}</option>
+                          {% endfor %}
                         </select>
                       </div>
                   </div>
