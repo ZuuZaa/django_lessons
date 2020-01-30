@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'cat',
     'subcat',
     'ckeditor',
+    'django_cleanup.apps.CleanupConfig',
 ]
 
 MIDDLEWARE = [

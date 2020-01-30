@@ -7,14 +7,10 @@ from subcat.models import SubCat
 from cat.models import Cat
 
 
-
-
 # Create your views here.
 def news_detail(request, word):
     
-    # site = Main.objects.filter(pk=2)
 
-    # return render(request, 'front/home.html', {'site':site})
 
     site = Main.objects.get(pk=2)
     news = News.objects.filter(name=word)
@@ -127,24 +123,23 @@ def news_delete(request, pk):
 
                 b = News.objects.get(pk=pk)
 
-                fs = FileSystemStorage()
-                fs.delete(b.picname)
+                catid = b.catid   # subcategory id
+                ocatid = b.ocatid #category id
 
-                ocatid = SubCat.objects.get(pk=catid).catid
+                b.delete()
+                
                 count = len(News.objects.filter(ocatid=ocatid))
-
                 m = Cat.objects.get(pk=ocatid)
                 m.count = count
                 m.save()
-
-                b.delete()
 
         except:
                 error = "something wrong"
                 return render(request, 'back/error.html', {'error': error}) 
 
-
         return redirect('news_list')
+
+
 
 def news_edit(request, pk):
 
@@ -222,9 +217,6 @@ def news_edit(request, pk):
                         b.save()
 
                         return redirect('news_list') 
-
-
-
 
 
         return render(request, 'back/news_edit.html', {'news': news, 'cat': cat})       
