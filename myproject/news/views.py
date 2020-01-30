@@ -4,6 +4,7 @@ from .models import News
 from django.core.files.storage import FileSystemStorage
 import datetime
 from subcat.models import SubCat
+from cat.models import Cat
 
 
 
@@ -48,6 +49,7 @@ def news_add(request):
 
         cat = SubCat.objects.all()
 
+
         if request.method == "POST":
                 
                 title = request.POST.get('newstitle')
@@ -55,7 +57,9 @@ def news_add(request):
                 body_txt = request.POST.get('bodytext')
                 picname = request.POST.get('picname')
                 catid = request.POST.get('newscat')
+                
                 catname = SubCat.objects.get(pk=catid).name
+                ocatid = SubCat.objects.get(pk=catid).catid
 
 
                 if title == "" or short_txt == "" or body_txt == "":
@@ -80,12 +84,19 @@ def news_add(request):
                                                 date = today,
                                                 time =time,
                                                 catid=catid, 
+                                                ocatid=ocatid, 
                                                 short_txt=short_txt, 
                                                 body_txt=body_txt,
                                                 picname = picname,
                                                 picurl=url, 
                                                 writer="admin", 
                                                 view =0,)
+                                        b.save()
+
+                                        count = len(News.objects.filter(ocatid=ocatid))
+
+                                        b = Cat.objects.get(pk=ocatid)
+                                        b.count = count
                                         b.save()
 
                                         return redirect('news_list')
@@ -110,11 +121,22 @@ def news_add(request):
 
 def news_delete(request, pk):
 
+        
+
         try:
 
                 b = News.objects.get(pk=pk)
+
                 fs = FileSystemStorage()
                 fs.delete(b.picname)
+
+                ocatid = SubCat.objects.get(pk=catid).catid
+                count = len(News.objects.filter(ocatid=ocatid))
+
+                m = Cat.objects.get(pk=ocatid)
+                m.count = count
+                m.save()
+
                 b.delete()
 
         except:
@@ -133,6 +155,7 @@ def news_edit(request, pk):
 
         news = News.objects.get(pk=pk)
         cat = SubCat.objects.all()
+        
 
         
         if request.method == "POST":

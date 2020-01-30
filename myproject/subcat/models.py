@@ -11,7 +11,6 @@ class SubCat(models.Model):
     catid = models.IntegerField()
 
 
-
 # for admin panel
     def __str__(self):
         return self.name 

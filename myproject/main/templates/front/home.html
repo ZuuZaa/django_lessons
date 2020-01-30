@@ -22,7 +22,7 @@
                     <img class="card-img-top" src="{{i.picurl}}">
                     <div class="card-body">
                             <p class="card-text">{{i.name}}</p>
-                            <p>{{i.short_txt}}</p>
+                            <p>{{i.short_txt | safe}}</p>
                             <span>{{i.writer}}</span>
                             <span>{{i.date}}</span>
                     </div>
