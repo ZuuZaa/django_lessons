@@ -27,21 +27,22 @@
             <li class="nav-item">
                 <a class="nav-link" href="/about">About</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Link 2</a>
-            </li>
 
             <!-- Dropdown -->
+            {% for i in cat %}
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-                    Categories
+                    {{i.name}}
                 </a>
                 <div class="dropdown-menu">
-                {% for i in cat %}
-                    <a class="dropdown-item" href="#">{{i.name}} | {{i.count}}</a>
-                {% endfor %}  
+                {% for s in subcat %}
+                {% if i.pk == s.catid%}
+                    <a class="dropdown-item" href="#"> {{s.name}} </a>
+                {% endif %}
+                {% endfor %} 
                 </div>
             </li>
+            {% endfor %} 
         </ul>
         <form class="form-inline ml-auto" action="/action_page.php">
             <input class="form-control mr-sm-2" type="text" placeholder="Search">
